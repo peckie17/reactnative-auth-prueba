@@ -9,6 +9,7 @@ import RegisterScreen from '../screens/RegisterScreen';
 import {AuthContext} from '../context/AuthContext';
 import SplashScreen from '../screens/SplashScreen';
 
+
 const Stack = createNativeStackNavigator();
 
 const Navigation = () => {
@@ -28,13 +29,13 @@ const Navigation = () => {
         ) : (
           <>
             <Stack.Screen
-              name="Login"
-              component={LoginScreen}
+              name="Register"
+              component={RegisterScreen}
               options={{headerShown: false}}
             />
             <Stack.Screen
-              name="Register"
-              component={RegisterScreen}
+              name="Login"
+              component={LoginScreen}
               options={{headerShown: false}}
             />
           </>

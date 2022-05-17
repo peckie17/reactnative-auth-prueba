@@ -18,7 +18,7 @@ import { MyTextInput, MyBoton } from "../components/"
 const ImgLogo = require("../../assets/MLogo.jpg");
 
 const RegisterScreen = ({navigation}) => {
-  const [name, setName] = useState('');
+  //const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [ConfContra, setConfiContra] = React.useState("");

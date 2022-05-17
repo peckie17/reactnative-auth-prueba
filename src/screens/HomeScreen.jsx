@@ -12,7 +12,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       
-      <Text style={styles.welcome}>Welcome {/*userInfo.user.name*/}</Text>
+      <Text style={styles.welcome}>Welcome {userInfo.tokens.access}</Text>
       
     </View>
   );
