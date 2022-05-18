@@ -7,6 +7,7 @@ import axios from 'axios';
 import { Picker } from "@react-native-picker/picker";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+//import DatePicker from 'react-native-date-picker';
 import { MyTextInput, MyBoton } from "../components/";
 
 import {BASE_URL} from '../config';
@@ -36,14 +37,13 @@ const HomeScreen = ({navigation}) => {
 
   const enviarCuenta = async () => {
 
-    console.log('Inento accesder al endpoint');
     const access_token = userInfo.tokens.access;
     const headers = {
       Authorization: `Bearer ${access_token}`,
     };
 
     try { 
-      console.log('Maldito bonbon ' + `${BASE_URL}/accounts/`);
+      
       setLoading(true);
       const response = await axios.post(`${BASE_URL}/accounts/`,
         cuenta,
@@ -52,7 +52,7 @@ const HomeScreen = ({navigation}) => {
 
       setLoading(false);
     } catch (error) {
-      console.log('maldita glu');
+      
       const data = error.response.data;
       setLoading(false);
       setError(data.msg ? data.msg : data.error);
@@ -78,24 +78,30 @@ const HomeScreen = ({navigation}) => {
         setValue={(text) => changeCuenta(text, "account_name")}
       />
       <Text>Tipo de Cuenta:</Text>
+      {/*
       <MyTextInput
         label="Tipo de cuenta:"
         place="e.g. ahorro"
         value={cuenta.type_account}
         setValue={(text) => changeCuenta(text, "type_account")}
       />
+  */}
       
-      {/*<Picker
-        selectedValue={PickerItems}
-        onValueChange={(itemValue, itemIndex) => SetPickerItems(itemValue)}
+      <Picker
+        selectedValue={cuenta.type_account}
+        onValueChange={(text) => changeCuenta(text, "type_account")}
+        placeholder="Tipo de cuenta"
+        mode = "dropdown"
       >
-        <Picker.Item label="Cuenta Corriente" value="Cuenta Corriente" />
-        <Picker.Item label="Chequera" value="Chequera" />
-        <Picker.Item label="Ahorros" value="Ahorros" />
-        <Picker.Item label="Nómina" value="Nómina" />
-        <Picker.Item label="Inversiones" value="Inversiones" />
-        <Picker.Item label="Cuenta en Dólares" value="Cuenta en Dólares" />
-  </Picker>*/}
+        <Picker.Item label="Selecciona el tipo de cuenta" />
+        <Picker.Item label="Efectivo" value="EFECTIVO" />
+        <Picker.Item label="Crédito" value="CREDITO" />
+        <Picker.Item label="Ahorros" value="AHORRO" />
+        <Picker.Item label="Nómina" value="NOMINA" />
+        <Picker.Item label="Inversiones" value="INVERSION" />
+        <Picker.Item label="Wallet" value="WALLET" />
+        <Picker.Item label="Vales" value="VALES" />
+      </Picker>
 
       <MyTextInput
         label="Número de cuenta:"
@@ -103,6 +109,7 @@ const HomeScreen = ({navigation}) => {
         value={cuenta.account_num}
         setValue={(text) => changeCuenta(text, "account_num")}
       />
+
       <MyTextInput
         label="Clabe Interbancaria:"
         place=" "
@@ -115,7 +122,7 @@ const HomeScreen = ({navigation}) => {
         value={cuenta.current_balance}
         setValue={(text) => changeCuenta(text, "current_balance")}
       />
-      <Text>Fecha de Corte:</Text>
+      {/*<Text>Fecha de Corte:</Text>*/}
 
       <MyTextInput
         label="Fecha de corte:"
@@ -123,9 +130,14 @@ const HomeScreen = ({navigation}) => {
         value={cuenta.cutoff_date}
         setValue={(text) => changeCuenta(text, "cutoff_date")}
       />
-      {/*
-      <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+
+{/*}
+      <DatePicker 
+        selected={cuenta.cutoff_date} 
+        onChange={(text) => changeCuenta(text, "cutoff_date")} 
+      />
 */}
+
       <MyBoton text="GUARDAR" onPress={enviarCuenta} />
     </View>
   );
@@ -147,7 +159,19 @@ const styles = StyleSheet.create({
     margin: 0,
   },
 });
+
+/*<DatePicker 
+        selected={cuenta.cutoff_date} 
+        onChange={(text) => changeCuenta(text, "cutoff_date")} 
+      />*/
   
+  /*<DatePicker 
+        date = {cuenta.cutoff_date}
+        mode="date"
+        onDateChange={(text) => changeCuenta(text, "cutoff_date")}
+      />*/
+
+
   /*
   (
     <View style={styles.container}>
