@@ -14,6 +14,11 @@ import {BASE_URL} from '../config';
 
 const ImgLogo = require("../../assets/MLogo.jpg");
 
+/*
+aqui quiero poner la navegacion del usuario loegeado
+*/
+
+
 //<Spinner visible={isLoading} />
 //<Button title="Logout" color="red" onPress={logout} />
 const HomeScreen = ({navigation}) => {
