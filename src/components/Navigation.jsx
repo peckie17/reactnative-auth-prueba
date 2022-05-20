@@ -8,6 +8,7 @@ import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import {AuthContext} from '../context/AuthContext';
 import SplashScreen from '../screens/SplashScreen';
+import HomeNavigation from '../Navigation/HomeNavigation';
 
 
 const Stack = createNativeStackNavigator();
@@ -25,7 +26,7 @@ const Navigation = () => {
             options={{headerShown: false}}
           />
         ) : userInfo.tokens ? (
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="HomeNavigator" component={HomeNavigation} options={{headerShown: false}}/>
         ) : (
           <>
             <Stack.Screen
