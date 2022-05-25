@@ -4,7 +4,7 @@ import {Button, StyleSheet, Text, View, Image} from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import axios from 'axios';
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createDrawerNavigator, useDrawerStatus } from "@react-navigation/drawer";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MyTextInput, MyBoton } from "../components/";
 import HomeScreen from '../screens/HomeScreen';
@@ -19,12 +19,13 @@ const ImgLogo = require("../../assets/MLogo.jpg");
 aqui quiero poner la navegacion del usuario loegeado
 */
 
-//const Home = createDrawerNavigator();
-const Home = createBottomTabNavigator();
+const Home = createDrawerNavigator();
+//const Home = createBottomTabNavigator();
+const isDrawerOpen = useDrawerStatus() === 'open';
 const HomeNavigation = ({navigation}) => {
 
     return (
-        <Home.Navigator>
+        <Home.Navigator initialRouteName="Home">
             <Home.Screen name="Gu" component={Gu}/>
             <Home.Screen name="Cuentas" component={HomeScreen}/>
             
