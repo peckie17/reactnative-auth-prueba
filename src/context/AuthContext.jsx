@@ -27,7 +27,9 @@ export const AuthProvider = ({children}) => {
             })
             .catch(e => {
                 console.log(`register error ${e}`);
+
                 setIsLoading(false);
+                alert(e);
             });
     };
 
@@ -49,7 +51,9 @@ export const AuthProvider = ({children}) => {
           })
           .catch(e => { //un error es cualquier cosa que no sea un 400?
             console.log(`login error ${e}`);
+
             setIsLoading(false);
+            alert(e);
           });
       };
 

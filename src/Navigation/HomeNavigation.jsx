@@ -14,6 +14,7 @@ import {AuthContext} from '../context/AuthContext';
 import {BASE_URL} from '../config';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Icon from 'react-native-fontawesome';
+import AccountsNavigator from './AccountsNavigation';
 
 const ImgLogo = require("../../assets/MLogo.jpg");
 
@@ -28,15 +29,21 @@ const MainStack = createNativeStackNavigator();
 const HomeNavigation = ({navigation}) => {
 
     return (
-        <Home.Navigator initialRouteName="Home" drawerContent={ (props) => <MenuItems {...props}/>}>
-            <Home.Screen name="MainPage" component={MainPage}/>
+        <Home.Navigator initialRouteName="Home" >
+            {/*<Home.Screen name="MainPage" component={MainPage}/>*/}
+            <Home.Screen name ="Gu" component={Gu}/>
+            <Home.Screen name="Cuentas" component={HomeScreen}/>
+            <Home.Screen name="Accounts Nav" component={AccountsNavigator}/>
+             
             {/*<Home.Screen name="Cuentas" component={HomeScreen}/>*/}
             
         </Home.Navigator>
 
     );
  
-} 
+}
+
+//drawerContent={ (props) => <MenuItems {...props}/>}
 
 const MenuItems = ({navigation}) => {
     return (
@@ -56,7 +63,7 @@ const MainPage = ({navigation}) => {
             <MainStack.Screen name ="Gu" component={Gu} 
                 options={({navigation})=> ({
                     headerLeft: () => (
-                        <Icon name = {'menu'} onPress = {() => {navigation.toggleDrawer()}} />
+                        <Icon name = {'menu'} onPress = {() => {navigation.openDrawer()}} />
                     )
                 })}
                 />

@@ -33,7 +33,7 @@ const HomeScreen = ({navigation}) => {
   const [startDate, setStartDate] = React.useState(new Date());
   const [Loading, setLoading] = React.useState(false);
 
-  const {userInfo, logout} = useContext(AuthContext);
+  const {userInfo} = useContext(AuthContext);
 
   const enviarCuenta = async () => {
 
