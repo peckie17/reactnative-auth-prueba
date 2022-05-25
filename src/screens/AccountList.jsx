@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import { View, Text, StyleSheet, } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
 import { MyTextInput } from "../components/";
 import {AuthContext} from '../context/AuthContext';
@@ -10,8 +10,8 @@ import {BASE_URL} from '../config';
 const ImgLogo = require("../../assets/MLogo.jpg");
 
 const AccountList = (navigation) => {
-const [account, setAccount] = React.useState([]);
-  const [cuenta, setCuenta] = React.useState({
+const [account, setAccount] = useState([]);
+  const [cuenta, setCuenta] = useState({
     account_name: "",
     type_account: "",
     account_num: "",
@@ -21,8 +21,8 @@ const [account, setAccount] = React.useState([]);
   });
   //const {account, deleteData} = React.useContext()
   const isFocused = useIsFocused();
-  const [Error, setError] = React.useState("");
-  const [Loading, setLoading] = React.useState(false);
+  const [Error, setError] = useState("");
+  const [Loading, setLoading] = useState(false);
   const {userInfo} = useContext(AuthContext);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const [account, setAccount] = React.useState([]);
 res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
 res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, access-control-allow-origin, profilerefid(whatever header you need)");*/
 
-    console.log(`GU token ${access_token}`);
+    //console.log(`GU token ${access_token}`);
     
     try {
       setLoading(true);
@@ -50,6 +50,7 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
       //const response = await axios.get(`${BASE_URL}/accounts/`, headers);
       console.log(response.data)
       setLoading(false);
+      setAccount(response.data)
     } catch (error) {
       
       //const data = error.response.data;
@@ -69,7 +70,12 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
 
   return (
     <View>
-      <Text>Gu Cuentas</Text>
+      <FlatList keyExtractor={(item) => item.id} 
+        data={account}
+        renderItem={({item})=> (
+          <Text>{item.account_name}</Text>
+        )}
+      />
     </View>
     );
 };
