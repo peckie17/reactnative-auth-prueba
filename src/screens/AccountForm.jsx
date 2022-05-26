@@ -51,6 +51,7 @@ const HomeScreen = ({navigation}) => {
       );
 
       setLoading(false);
+      alert('Cuenta registrada');
     } catch (error) {
       
       const data = error.response.data;

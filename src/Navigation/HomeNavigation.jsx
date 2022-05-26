@@ -32,8 +32,8 @@ const HomeNavigation = ({navigation}) => {
         <Home.Navigator initialRouteName="Home" >
             {/*<Home.Screen name="MainPage" component={MainPage}/>*/}
             <Home.Screen name ="Gu" component={Gu}/>
-            <Home.Screen name="Cuentas" component={HomeScreen}/>
-            <Home.Screen name="Accounts Nav" component={AccountsNavigator}/>
+            {/*<Home.Screen name="Cuentas" component={HomeScreen}/>*/}
+            <Home.Screen name="Cuentas" component={AccountsNavigator}/>
              
             {/*<Home.Screen name="Cuentas" component={HomeScreen}/>*/}
             

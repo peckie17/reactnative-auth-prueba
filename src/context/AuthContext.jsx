@@ -24,6 +24,7 @@ export const AuthProvider = ({children}) => {
                 AsyncStorage.setItem('userInfo', JSON.stringify(userInfo)); //buscar esta cosa
                 setIsLoading(false);
                 console.log(userInfo);
+                alert('Usuario exitosamente registrado. Ve a Login.');
             })
             .catch(e => {
                 console.log(`register error ${e}`);

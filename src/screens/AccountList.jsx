@@ -4,14 +4,17 @@ import { useIsFocused } from "@react-navigation/native";
 import { MyTextInput } from "../components/";
 import {AuthContext} from '../context/AuthContext';
 import axios from 'axios';
+import request from "../api";
 
 import {BASE_URL} from '../config';
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 const ImgLogo = require("../../assets/MLogo.jpg");
 
 const AccountList = (navigation) => {
 const [account, setAccount] = useState([]);
   const [cuenta, setCuenta] = useState({
+    id:0,
     account_name: "",
     type_account: "",
     account_num: "",
@@ -46,8 +49,9 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
     
     try {
       setLoading(true);
-      const response = await axios({ method: 'get', url: `${BASE_URL}/accounts/`, headers: { 'Authorization': 'Bearer ' + access_token } })
+      //const response = await axios({ method: 'get', url: `${BASE_URL}/accounts/`, headers: { 'Authorization': 'Bearer ' + access_token } })
       //const response = await axios.get(`${BASE_URL}/accounts/`, headers);
+      const response = await request({method: 'get', url: '/accounts/'})
       console.log(response.data)
       setLoading(false);
       setAccount(response.data)
@@ -69,14 +73,20 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
   }
 
   return (
-    <View>
-      <FlatList keyExtractor={(item) => item.id} 
-        data={account}
-        renderItem={({item})=> (
-          <Text>{item.account_name}</Text>
-        )}
-      />
-    </View>
+    
+      
+        <ScrollView style={styles.container}>
+          {account.map((acc, idx) => {
+            return (
+            <TouchableOpacity key={`account-${idx}`} >
+              <View style={styles.accItem}> 
+                <Text >{acc.account_name}</Text> 
+              </View>
+            </TouchableOpacity>
+            )
+          })}
+        </ScrollView>
+    
     );
 };
 
@@ -102,6 +112,22 @@ actualizar:{
     alignSelf: "flex-end",
     borderRadius: 10,
     marginBottom: 20,
+},
+container: {
+  flex: 1,
+  backgroundColor: '#FFFFFF', //RRGGBB hex
+  flexDirection: 'column',
+},
+accItem:{
+  backgroundColor:'#FFFFFF',
+  padding:20,
+  borderRadius:8,
+  borderWidth:1,
+  borderColor:'#000000',
+  marginBottom:10,
+  flexDirection:'column',
+  alignItems:'center',
+  justifyContent:'center',
 },
 });
 
@@ -153,3 +179,11 @@ export default AccountList;
     </View>
 
 */
+/*{/*<FlatList keyExtractor={(item) => item.id} 
+        data={account}
+        renderItem={({item})=> (
+          <Text>{item.account_name}</Text>
+        )}
+        ItemSeparatorComponent = {() => <View style={{margin:8, borderColor: '#00000020', borderWidth: 0.5 }}/>}
+        />*/
+  
