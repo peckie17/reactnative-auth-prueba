@@ -31,7 +31,7 @@ const HomeNavigation = ({navigation}) => {
     return (
         <Home.Navigator initialRouteName="Home" >
             {/*<Home.Screen name="MainPage" component={MainPage}/>*/}
-            <Home.Screen name ="Gu" component={Gu}/>
+            <Home.Screen name ="Home" component={Gu}/>
             {/*<Home.Screen name="Cuentas" component={HomeScreen}/>*/}
             <Home.Screen name="Cuentas" component={AccountsNavigator}/>
              

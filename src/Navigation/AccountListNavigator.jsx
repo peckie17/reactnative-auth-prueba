@@ -14,7 +14,7 @@ export default function AccountListNavigator(){
            <AccountListStack.Screen 
                 name="AccountDetail" 
                 component={AccountDetailScreen} 
-                options={{headerShown: true}}/>
+                options={({ route }) => ({ title: 'Detalle de cuenta: ' + route.params.account_name })}/>
        </AccountListStack.Navigator> 
     )
 }

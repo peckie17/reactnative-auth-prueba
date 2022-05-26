@@ -33,7 +33,6 @@ const AccountList = ({navigation}) => {
       console.log(response.data)
       setLoading(false);
       setAccount(response.data)
-      console.log(account);
     } catch (error) {
       
       //const data = error.response.data;
@@ -64,7 +63,7 @@ const AccountList = ({navigation}) => {
             return (
             <TouchableOpacity key={`account-${idx}`} onPressIn={()=>navigation.navigate('AccountDetail', acc)}>
               <View style={styles.accItem}> 
-                <Text >{acc.account_name}-{acc.current_balance}</Text> 
+                <Text >{acc.account_name}-{acc.type_account}-{acc.current_balance}</Text> 
               </View>
             </TouchableOpacity>
             )
