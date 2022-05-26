@@ -11,17 +11,8 @@ import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
 const ImgLogo = require("../../assets/MLogo.jpg");
 
-const AccountList = (navigation) => {
-const [account, setAccount] = useState([]);
-  const [cuenta, setCuenta] = useState({
-    id:0,
-    account_name: "",
-    type_account: "",
-    account_num: "",
-    current_balance: "",
-    account_cbe: "",
-    cutoff_date: "",
-  });
+const AccountList = ({navigation}) => {
+  const [account, setAccount] = useState([]);
   //const {account, deleteData} = React.useContext()
   const isFocused = useIsFocused();
   const [Error, setError] = useState("");
@@ -35,26 +26,14 @@ const [account, setAccount] = useState([]);
   }, [isFocused]);
 
   const getAccount = async () => {
-    const access_token = userInfo.tokens.access;
-    const headers = {
-      Authorization: `Bearer ${access_token}`,
-    };
-
-    /*
-    res.header("Access-Control-Allow-Origin", "*");
-res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization, access-control-allow-origin, profilerefid(whatever header you need)");*/
-
-    //console.log(`GU token ${access_token}`);
     
     try {
       setLoading(true);
-      //const response = await axios({ method: 'get', url: `${BASE_URL}/accounts/`, headers: { 'Authorization': 'Bearer ' + access_token } })
-      //const response = await axios.get(`${BASE_URL}/accounts/`, headers);
       const response = await request({method: 'get', url: '/accounts/'})
       console.log(response.data)
       setLoading(false);
       setAccount(response.data)
+      console.log(account);
     } catch (error) {
       
       //const data = error.response.data;
@@ -72,13 +51,18 @@ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Ty
     deleteData(idx);
   }
 
+  const accountDetail = ({...acc}) => {
+    //console.log('POD'+acc.id+'-')
+    navigation.navigate('AccountDetail')
+  };
+
   return (
     
-      
+    
         <ScrollView style={styles.container}>
           {account.map((acc, idx) => {
             return (
-            <TouchableOpacity key={`account-${idx}`} >
+            <TouchableOpacity key={`account-${idx}`} onPressIn={()=>navigation.navigate('AccountDetail', acc)}>
               <View style={styles.accItem}> 
                 <Text >{acc.account_name}</Text> 
               </View>
@@ -119,11 +103,11 @@ container: {
   flexDirection: 'column',
 },
 accItem:{
-  backgroundColor:'#FFFFFF',
-  padding:20,
+  backgroundColor:'#F2F2F2',
+  padding:10,
   borderRadius:8,
-  borderWidth:1,
-  borderColor:'#000000',
+ // borderWidth:1,
+  //borderColor:'#000020',
   marginBottom:10,
   flexDirection:'column',
   alignItems:'center',
