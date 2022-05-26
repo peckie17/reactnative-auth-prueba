@@ -64,7 +64,7 @@ const AccountList = ({navigation}) => {
             return (
             <TouchableOpacity key={`account-${idx}`} onPressIn={()=>navigation.navigate('AccountDetail', acc)}>
               <View style={styles.accItem}> 
-                <Text >{acc.account_name}</Text> 
+                <Text >{acc.account_name}-{acc.current_balance}</Text> 
               </View>
             </TouchableOpacity>
             )

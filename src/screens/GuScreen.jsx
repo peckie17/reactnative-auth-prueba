@@ -9,12 +9,10 @@ const Gu = ({navigation}) => {
     return (
       <SafeAreaView style={styles.margen}>
         <View>
-          <Text style={styles.container}>Bienvenido</Text>
+          <Text style={styles.texto1}>Bienvenido a</Text>
         </View>
         <Image source={ImgLogo} style={styles.logoMoney} />
-        <Text style={styles.texto1}>
-            Gu
-        </Text>
+
       </SafeAreaView>
     );
   };
@@ -25,8 +23,8 @@ const Gu = ({navigation}) => {
       backgroundColor: "#000",
       alignItems: "center",
       justifyContent: "center",
-      borderBottomColor: "#fff",
-      borderBottomWidth: 120,
+      //borderBottomColor: "#fff",
+      //borderBottomWidth: 120,
     },
     logoMoney: {
       height: 129,
@@ -64,8 +62,8 @@ const Gu = ({navigation}) => {
       right: "52%",
     },
     texto1: {
-      fontFamily: "Roboto",
-      fontSize: 13,
+      fontFamily: "Tahoma",
+      fontSize: 20,
       color: "#fff",
       alignSelf: "center",
       padding: 5,

@@ -11,7 +11,10 @@ export default function AccountListNavigator(){
     return(
        <AccountListStack.Navigator>
            <AccountListStack.Screen name="AccountList" component={AccountList} options={{headerShown: false}} />
-           <AccountListStack.Screen name="AccountDetail" component={AccountDetailScreen} options={{headerShown: false}}/>
+           <AccountListStack.Screen 
+                name="AccountDetail" 
+                component={AccountDetailScreen} 
+                options={{headerShown: true}}/>
        </AccountListStack.Navigator> 
     )
 }

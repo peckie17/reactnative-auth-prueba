@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 //import DatePicker from 'react-native-date-picker';
 import { MyTextInput, MyBoton } from "../components/";
 import request from "../api";
-
+//import { MyTextInput, MyBoton } from "../components/";
 import {BASE_URL} from '../config';
 
 //import { useState } from 'react/cjs/react.production.min';
@@ -37,6 +37,14 @@ const AccountDetailScreen = ({navigation}) => {
   //const [isLoading, setLoading] = React.useState(false);
 
   const {userInfo} = useContext(AuthContext);
+
+  const updateAccount = (text, name) => {
+    setAccount({
+      ...account,
+      [name]: text,
+    });
+  };
+
   useEffect(() => {
     if (isFocused) {
       getAccountDetail();
@@ -74,11 +82,49 @@ const AccountDetailScreen = ({navigation}) => {
   
   return (
     <View style={styles.container}>
-      <Text>Detalle cuenta :3</Text>
-      <Text>{route.params.id}</Text>
-      <Text>{route.params.account_name}</Text>
-      <Text>Detalle cuenta :3 del request</Text>
-      <Text>{account.account_name}Gu</Text>
+      
+      <Image source={ImgLogo} style={styles.logoMoney} />
+      <MyTextInput
+        label="Nombre:"
+        place={route.params.account_name}
+        value={account.account_name}
+        setValue={(text) => updateAccount(text, "account_name")}
+      />
+
+      <MyTextInput
+        label="Tipo de cuenta:"
+        place={account.type_account}
+        value={account.type_account}
+        setValue={(text) => updateAccount(text, "type_account")}
+      />
+
+      <MyTextInput
+        label="Número de cuenta:"
+        place={account.account_num}
+        value={account.account_num}
+        setValue={(text) => updateAccount(text, "account_num")}
+      />
+
+      <MyTextInput
+        label="Saldo actual:"
+        place={account.current_balance}
+        value={account.current_balance}
+        setValue={(text) => updateAccount(text, "current_balance")}
+      />
+
+      <MyTextInput
+        label="Clabe interbancaria:"
+        place={account.account_cbe}
+        value={account.account_cbe}
+        setValue={(text) => updateAccount(text, "account_cbe")}
+      />
+
+      <MyTextInput
+        label="Fecha de corte:"
+        place={account.cutoff_date}
+        value={account.cutoff_date}
+        setValue={(text) => updateAccount(text, "cutoff_date")}
+      />
     </View>
   );
 }

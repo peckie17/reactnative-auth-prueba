@@ -60,7 +60,7 @@ export default HomeNavigation;
 const MainPage = ({navigation}) => {
     return (
         <MainStack.Navigator initialRouteName='MainPage'>
-            <MainStack.Screen name ="Gu" component={Gu} 
+            <MainStack.Screen name ="Home" component={Gu} 
                 options={({navigation})=> ({
                     headerLeft: () => (
                         <Icon name = {'menu'} onPress = {() => {navigation.openDrawer()}} />

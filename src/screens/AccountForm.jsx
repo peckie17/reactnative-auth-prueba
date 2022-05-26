@@ -112,18 +112,20 @@ const HomeScreen = ({navigation}) => {
       />
 
       <MyTextInput
-        label="Clabe Interbancaria:"
-        place=" "
-        value={cuenta.account_cbe}
-        setValue={(text) => changeCuenta(text, "account_cbe")}
-      />
-      <MyTextInput
         label="Saldo Actual:"
         place=" "
         value={cuenta.current_balance}
         setValue={(text) => changeCuenta(text, "current_balance")}
       />
       {/*<Text>Fecha de Corte:</Text>*/}
+
+      <MyTextInput
+        label="Clabe Interbancaria:"
+        place=" "
+        value={cuenta.account_cbe}
+        setValue={(text) => changeCuenta(text, "account_cbe")}
+      />
+      
 
       <MyTextInput
         label="Fecha de corte:"
