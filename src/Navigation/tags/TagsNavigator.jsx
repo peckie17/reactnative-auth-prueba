@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import TagsScreen from "../screens/tags/TagsScreen";
+import TagsScreen from "../../screens/tags/TagsScreen";
 
 const BottomTab = createBottomTabNavigator()
 

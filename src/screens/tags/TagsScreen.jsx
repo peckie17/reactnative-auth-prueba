@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, {useState} from "react";
 import {
   Text,
   StyleSheet,
@@ -11,20 +11,21 @@ import {
 } from "react-native";
 import { MyTextInput, MyBoton } from "../../components/";
 import { Picker } from "@react-native-picker/picker";
+import request from "../../api";
 
 const ImgLogo = require("../../../assets/MLogo.jpg");
 
 
 export default function TagsScreen({ navigation }) {
-  const [etiqueta, setEtiqueta] = React.useState({
+  const [etiqueta, setEtiqueta] = useState({
     description: "",
-    tag_type: "",
-    clasification: "",
-    color: "",
+    flow_type: "",
+    cost_type: "",
+    tag_color: "",
   });
-  const [Loading, setLoading] = React.useState(false);
-  const [Error, setError] = React.useState("");
-  const [PickerItems, SetPickerItems] = React.useState();
+  const [Loading, setLoading] = useState(false);
+  const [Error, setError] = useState("");
+  const [PickerItems, SetPickerItems] = useState();
 
   const ChangeUserInputs = (propiedad, value) => {
     setUser({
@@ -34,21 +35,12 @@ export default function TagsScreen({ navigation }) {
   };
 
   const enviarEtiqueta = async () => {
-    const access_token =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUxODc3NDAyLCJpYXQiOjE2NTE4NzcxMDIsImp0aSI6ImI2YzkwMjlkOTBhODQ3MDJiZWQ3OTU5YmI3N2U1NTMxIiwidXNlcl9pZCI6NDh9.sLXmgxmR5Ix_CMTF2w9h7fTmyarvPIVt2ZGINozJ-gU";
-    const headers = {
-      Authorization: `Bearer ${access_token}`,
-    };
-
+    
     try {
       setLoading(true);
-      const response = await axios.post(
-        "https://mymoneyhackademy.herokuapp.com/accounts/",
-        etiqueta,
-        { headers: headers }
-      );
-
+      const response = await request({method: 'post', url: '/customtags/', data: etiqueta});
       setLoading(false);
+      alert('Etiqueta exitosamente registrada');
     } catch (error) {
       const data = error.response.data;
       setLoading(false);
@@ -71,38 +63,47 @@ export default function TagsScreen({ navigation }) {
       <MyTextInput
         label="Descripción:"
         place=" "
-        value={etiqueta.account_name}
+        value={etiqueta.description}
         setValue={(text) => changeEtiqueta(text, "description")}
       />
     <Text>Tipo:</Text>
       <Picker
-        selectedValue={PickerItems}
-        onValueChange={(itemValue, itemIndex) => SetPickerItems(itemValue)}
+        selectedValue={etiqueta.flow_type}
+        onValueChange={(itemValue) => changeEtiqueta(itemValue, "flow_type")}
       >
-        <Picker.Item label="Gasto" value="Gasto" />
-        <Picker.Item label="Ingreso" value="Ingreso" />
+        <Picker.Item label="Selecciona un tipo de movimiento"/>
+        <Picker.Item label="Gasto" value="EGRESOS" />
+        <Picker.Item label="Ingreso" value="INGRESOS" />
 
       </Picker>
 
       <Text>Clasificación:</Text>
       <Picker
-        selectedValue={PickerItems}
-        onValueChange={(itemValue, itemIndex) => SetPickerItems(itemValue)}
+        selectedValue={etiqueta.cost_type}
+        onValueChange={(itemValue) => changeEtiqueta(itemValue, "cost_type")}
       >
-        <Picker.Item label="Fijo" value="Fijo" />
-        <Picker.Item label="Variable" value="Variable" />
+        <Picker.Item label="Selecciona un tipo: fijo/variable"/>
+        <Picker.Item label="Fijo" value="FIJO" />
+        <Picker.Item label="Variable" value="VARIABLE" />
 
       </Picker>
 
       <Text>Color:</Text>
-      <Picker
+      {/*<Picker
         selectedValue={PickerItems}
         onValueChange={(itemValue, itemIndex) => SetPickerItems(itemValue)}
       >
         <Picker.Item label=" " value=" " />
         <Picker.Item label=" " value=" " />
 
-      </Picker>
+  </Picker>*/}
+    <MyTextInput
+        label="Color:"
+        place=" "
+        value={etiqueta.tag_color}
+        setValue={(text) => changeEtiqueta(text, "tag_color")}
+      />
+    
       
       
       <MyBoton text="GUARDAR" onPress={enviarEtiqueta} />

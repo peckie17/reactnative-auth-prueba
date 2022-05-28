@@ -43,6 +43,8 @@ const HomeNavigation = ({navigation}) => {
  
 }
 
+export default HomeNavigation;
+
 //drawerContent={ (props) => <MenuItems {...props}/>}
 /*
 const MenuItems = ({navigation}) => {
@@ -54,7 +56,7 @@ const MenuItems = ({navigation}) => {
         </DrawerContentScrollView>
     )
 }
-export default HomeNavigation;
+
 
 
 const MainPage = ({navigation}) => {
