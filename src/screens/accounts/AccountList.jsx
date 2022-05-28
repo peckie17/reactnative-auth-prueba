@@ -1,15 +1,15 @@
 import React, {useContext, useEffect, useState} from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import { useIsFocused } from "@react-navigation/native";
-import { MyTextInput } from "../components/";
-import {AuthContext} from '../context/AuthContext';
+import { MyTextInput } from "../../components";
+import {AuthContext} from '../../context/AuthContext';
 import axios from 'axios';
-import request from "../api";
+import request from "../../api";
 
-import {BASE_URL} from '../config';
+import {BASE_URL} from '../../config';
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 
-const ImgLogo = require("../../assets/MLogo.jpg");
+const ImgLogo = require("../../../assets/MLogo.jpg");
 
 const AccountList = ({navigation}) => {
   const [account, setAccount] = useState([]);

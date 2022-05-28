@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import AccountList from '../screens/AccountList';
-import AccountForm from '../screens/AccountForm';
+import AccountList from '../../screens/accounts/AccountList';
+import AccountForm from '../../screens/accounts/AccountForm';
 import AccountListNavigator from "./AccountListNavigator";
 
 

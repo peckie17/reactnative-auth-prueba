@@ -2,17 +2,17 @@ import React, {useContext} from 'react';
 import {Button, StyleSheet, Text, View, Image} from 'react-native';
 
 import Spinner from 'react-native-loading-spinner-overlay';
-import {AuthContext} from '../context/AuthContext';
+import {AuthContext} from '../../context/AuthContext';
 import axios from 'axios';
 import { Picker } from "@react-native-picker/picker";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 //import DatePicker from 'react-native-date-picker';
-import { MyTextInput, MyBoton } from "../components/";
+import { MyTextInput, MyBoton } from "../../components/";
 
-import {BASE_URL} from '../config';
+import {BASE_URL} from '../../config';
 
-const ImgLogo = require("../../assets/MLogo.jpg");
+const ImgLogo = require("../../../assets/MLogo.jpg");
 
 //<Spinner visible={isLoading} />
 //<Button title="Logout" color="red" onPress={logout} />

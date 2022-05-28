@@ -48,7 +48,7 @@ export const AuthProvider = ({children}) => {
             setUserInfo(userInfo);
             AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
             setIsLoading(false);
-            console.log(userInfo.tokens.access);
+            //console.log(userInfo.tokens.access);
           })
           .catch(e => { //un error es cualquier cosa que no sea un 400?
             console.log(`login error ${e}`);

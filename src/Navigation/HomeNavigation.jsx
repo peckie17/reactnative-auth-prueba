@@ -14,7 +14,8 @@ import {AuthContext} from '../context/AuthContext';
 import {BASE_URL} from '../config';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Icon from 'react-native-fontawesome';
-import AccountsNavigator from './AccountsNavigation';
+import AccountsNavigator from './accounts/AccountsNavigation';
+import TagsNavigator from './tags/TagsNavigator';
 
 const ImgLogo = require("../../assets/MLogo.jpg");
 
@@ -34,17 +35,16 @@ const HomeNavigation = ({navigation}) => {
             <Home.Screen name ="Home" component={Gu}/>
             {/*<Home.Screen name="Cuentas" component={HomeScreen}/>*/}
             <Home.Screen name="Cuentas" component={AccountsNavigator}/>
-             
+            <Home.Screen name="Etiquetas" component={TagsNavigator}/>
             {/*<Home.Screen name="Cuentas" component={HomeScreen}/>*/}
             
         </Home.Navigator>
-
     );
  
 }
 
 //drawerContent={ (props) => <MenuItems {...props}/>}
-
+/*
 const MenuItems = ({navigation}) => {
     return (
         <DrawerContentScrollView>
@@ -70,3 +70,4 @@ const MainPage = ({navigation}) => {
         </MainStack.Navigator>
     )
 }
+*/

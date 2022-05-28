@@ -5,18 +5,12 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import HomeScreen from '../screens/HomeScreen';
-import LoginScreen from '../screens/LoginScreen';
-import RegisterScreen from '../screens/RegisterScreen';
+//import LoginScreen from '../screens/LoginScreen';
+//import RegisterScreen from '../screens/RegisterScreen';
 import {AuthContext} from '../context/AuthContext';
 import SplashScreen from '../screens/SplashScreen';
 import HomeNavigation from './HomeNavigation';
 import AuthNavigation from './AuthNavigation';
-
-
-//const Stack = createNativeStackNavigator();
-
-//const Stack = createDrawerNavigator();
-//const Home = createDrawerNavigator();
 
 const Navigation = () => {
   const {userInfo, splashLoading} = useContext(AuthContext);

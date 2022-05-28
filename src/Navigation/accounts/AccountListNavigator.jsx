@@ -1,8 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import AccountList from '../screens/AccountList';
-import AccountForm from '../screens/AccountForm';
+import AccountList from '../../screens/accounts/AccountList';
+import AccountForm from '../../screens/accounts/AccountForm';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import AccountDetailScreen from "../screens/AccountDetailScreen";
+import AccountDetailScreen from "../../screens/accounts/AccountDetailScreen";
 
 
 const AccountListStack = createNativeStackNavigator();

@@ -11,11 +11,11 @@ import {
   Image,
 } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
-import {AuthContext} from '../context/AuthContext';
-import {passwordValidation} from "../../utils/validation";
-import { MyTextInput, MyBoton } from "../components/"
+import {AuthContext} from '../../context/AuthContext';
+import {passwordValidation} from "../../../utils/validation";
+import { MyTextInput, MyBoton } from "../../components"
 
-const ImgLogo = require("../../assets/MLogo.jpg");
+const ImgLogo = require("../../../assets/MLogo.jpg");
 
 const RegisterScreen = ({navigation}) => {
   //const [name, setName] = useState('');
